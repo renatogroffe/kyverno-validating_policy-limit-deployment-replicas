@@ -24,4 +24,4 @@ spec:
               memory: "256Mi"
           env:
           - name: EndpointRequest
-            value: https://groffeapicontagem.redfield-34a01ef2.eastus.azurecontainerapps.io/contador
+            value: TEST_ENDPOINT
