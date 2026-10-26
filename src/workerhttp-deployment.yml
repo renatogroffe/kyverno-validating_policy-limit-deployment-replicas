@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workerhttp
+spec:
+  selector:
+    matchLabels:
+      app: workerhttp
+  replicas: 7
+  template:
+    metadata:
+      labels:
+        app: workerhttp
+    spec:
+      containers:
+        - name: worker
+          image: renatogroffe/dotnet10-worker-httprequest:2
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          env:
+          - name: EndpointRequest
+            value: https://groffeapicontagem.redfield-34a01ef2.eastus.azurecontainerapps.io/contador
